@@ -20,134 +20,27 @@
     
     <h2>31 - Checkerboard Organization</h2>
     
-    
         <card class="container">
             <div class="row">
                 <div class="col-4">
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
--- 31: Checkerboard Organization --
-
--- Target Size: 7
--- Size: 42
--- Target Speed: 100
--- Speed: 50
-
-mem1 = nearest printer
-takefrom mem1
-step ne
-step ne
-step e
-a:
-if w == hole or
- s == hole or
- e != wall and
- c == nothing:
-	drop
-	jump b
-endif
-if e == wall:
-	step sw
-else:
-	step se
-endif
-jump a
-b:
-c:
-mem2 = nearest datacube
-takefrom mem1
-step mem2
-if w != hole:
-	step w
-	if w == wall and
-	 c == datacube:
-		step mem1
-		step se
-		d:
-		step e
-		if c == nothing:
-			drop
-			end
-		endif
-		step e
-		jump d
-	endif
-	if w == wall:
-		step mem1
-		step sw
-		e:
-		step w
-		if c == nothing:
-			drop
-			end
-		endif
-		step w
-		jump e
-	endif
-	step w
-else:
-	step sw
-	step nw
-endif
-drop
-jump c
-</pre></div>
-</pre>
-        </div>
-    </div>
-
-                </div>
-                <div class="col-8">
-                    
-    <div class="card">
-        <h4>Size Challenge</h4>
-        <p>Use <strong>7</strong> or fewer commands.</p>
-        <p class="text-danger">
-            <strong>Your current solution uses 42 commands.</strong>
-        </p>
-        <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
-    </div>
-
-                    <hr />
-                    
-    <div class="card">
-        <h4>Speed Challenge</h4>
-        <p>Complete in <strong>100</strong> or fewer seconds, averaged over 25 random tests.</p>
-        <p class="text-success">
-            <strong>Your solution completes in 50 seconds, on average.</strong>
-        </p>
-        <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
-    </div>
-
-                </div>
-            </div>
-        </card>
-    
-    
-        <card class="container">
-            <div class="row">
-                <div class="col-4">
-                    
-    <div class="card">
-        <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 31: Checkerboard Organization --
 
 -- Target Size: 7
 -- Size: 7
 -- Target Speed: 100
--- Speed: 90
+-- Speed: 240
 
 mem1 = nearest printer
 a:
-if c == nothing:
-	drop
-	takefrom mem1
-	step w,e
-endif
+takefrom mem1
+mem2 = nearest datacube
+step mem2
 step nw,sw,ne,se
+drop
 jump a
 </pre></div>
 </pre>
@@ -171,8 +64,8 @@ jump a
     <div class="card">
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>100</strong> or fewer seconds, averaged over 25 random tests.</p>
-        <p class="text-success">
-            <strong>Your solution completes in 90 seconds, on average.</strong>
+        <p class="text-danger">
+            <strong>Your solution completes in 240 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -180,6 +73,83 @@ jump a
                 </div>
             </div>
         </card>
+    
+    
+        <card class="container">
+            <div class="row">
+                <div class="col-4">
+                    
+    <div class="card">
+        <div class="col-xs-6">
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
+-- 31: Checkerboard Organization --
+
+-- Target Size: 7
+-- Size: 22
+-- Target Speed: 100
+-- Speed: 71
+
+mem1 = nearest printer
+mem2 = nearest datacube
+a:
+if myitem != datacube:
+	takefrom mem1
+endif
+step mem2
+b:
+if nw == nothing:
+	step nw
+else:
+	if ne == nothing:
+		step ne
+	else:
+		if sw == nothing:
+			step sw
+		else:
+			if se == nothing:
+				step se
+			else:
+				step nw,sw,ne,se
+				jump b
+			endif
+		endif
+	endif
+endif
+drop
+mem2 = nearest datacube
+jump a
+</pre></div>
+</pre>
+        </div>
+    </div>
+
+                </div>
+                <div class="col-8">
+                    
+    <div class="card">
+        <h4>Size Challenge</h4>
+        <p>Use <strong>7</strong> or fewer commands.</p>
+        <p class="text-danger">
+            <strong>Your current solution uses 22 commands.</strong>
+        </p>
+        <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
+    </div>
+
+                    <hr />
+                    
+    <div class="card">
+        <h4>Speed Challenge</h4>
+        <p>Complete in <strong>100</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p class="text-success">
+            <strong>Your solution completes in 71 seconds, on average.</strong>
+        </p>
+        <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
+    </div>
+
+                </div>
+            </div>
+        </card>
+    
     
 
 </div>

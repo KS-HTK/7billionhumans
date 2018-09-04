@@ -30,30 +30,28 @@
 -- 37: Dangerous Spreadsheeting --
 
 -- Target Size: 13
--- Size: 15
+-- Size: 13
 -- Target Speed: 32
--- Speed: 31
+-- Speed: 34
 
 a:
+b:
+mem1 = calc mem1 + c
 if e == hole:
-	step se
-	if ne == hole:
+	step ne
+	if se == hole:
 		step e
 	endif
-	step ne
-else:
-	step e
+	step se
+	jump b
 endif
-if e == wall:
-	pickup c
-	write mem1
-	drop
-	end
+step e
+if e != wall:
+	jump a
 endif
-if c == datacube:
-	mem1 = calc mem1 + c
-endif
-jump a
+pickup c
+write mem1
+drop
 </pre></div>
 </pre>
         </div>
@@ -65,8 +63,8 @@ jump a
     <div class="card">
         <h4>Size Challenge</h4>
         <p>Use <strong>13</strong> or fewer commands.</p>
-        <p class="text-danger">
-            <strong>Your current solution uses 15 commands.</strong>
+        <p class="text-success">
+            <strong>Your current solution uses 13 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -76,8 +74,8 @@ jump a
     <div class="card">
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>32</strong> or fewer seconds, averaged over 25 random tests.</p>
-        <p class="text-success">
-            <strong>Your solution completes in 31 seconds, on average.</strong>
+        <p class="text-danger">
+            <strong>Your solution completes in 34 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -97,28 +95,33 @@ jump a
 -- 37: Dangerous Spreadsheeting --
 
 -- Target Size: 13
--- Size: 15
+-- Size: 18
 -- Target Speed: 32
--- Speed: 31
+-- Speed: 32
 
+mem1 = set 0
+step e
 a:
+b:
+if c == datacube and
+ e != wall:
+	mem1 = calc mem1 + c
+endif
 if e == hole:
-	step se
-	if ne == hole:
+	step ne
+	if se == hole:
 		step e
 	endif
-	step ne
-else:
-	step e
+	step se
+	jump b
 endif
 if e == wall:
 	pickup c
 	write mem1
 	drop
 	end
-endif
-if c == datacube:
-	mem1 = calc mem1 + c
+else:
+	step e
 endif
 jump a
 </pre></div>
@@ -133,7 +136,7 @@ jump a
         <h4>Size Challenge</h4>
         <p>Use <strong>13</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 15 commands.</strong>
+            <strong>Your current solution uses 18 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -144,7 +147,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>32</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 31 seconds, on average.</strong>
+            <strong>Your solution completes in 32 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

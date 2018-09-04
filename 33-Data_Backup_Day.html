@@ -20,28 +20,30 @@
     
     <h2>33 - Data Backup Day</h2>
     
+    
+    
         <card class="container">
             <div class="row">
                 <div class="col-4">
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 33: Data Backup Day --
 
 -- Target Size: 8
 -- Size: 8
 -- Target Speed: 3
--- Speed: 4
+-- Speed: 3
 
 mem1 = set w
 mem2 = set e
-if w &gt; e:
+if mem1 &lt; mem2:
 	mem1 = set e
 	mem2 = set w
 endif
-pickup mem2
-write mem1
+pickup mem1
+write mem2
 drop
 </pre></div>
 </pre>
@@ -65,65 +67,8 @@ drop
     <div class="card">
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>3</strong> or fewer seconds, averaged over 25 random tests.</p>
-        <p class="text-danger">
-            <strong>Your solution completes in 4 seconds, on average.</strong>
-        </p>
-        <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
-    </div>
-
-                </div>
-            </div>
-        </card>
-    
-    
-        <card class="container">
-            <div class="row">
-                <div class="col-4">
-                    
-    <div class="card">
-        <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
--- 33: Data Backup Day --
-
--- Target Size: 8
--- Size: 9
--- Target Speed: 3
--- Speed: 2
-
-if w &gt; e:
-	mem1 = set e
-	step w
-else:
-	mem1 = set w
-	step e
-endif
-pickup c
-write mem1
-drop
-</pre></div>
-</pre>
-        </div>
-    </div>
-
-                </div>
-                <div class="col-8">
-                    
-    <div class="card">
-        <h4>Size Challenge</h4>
-        <p>Use <strong>8</strong> or fewer commands.</p>
-        <p class="text-danger">
-            <strong>Your current solution uses 9 commands.</strong>
-        </p>
-        <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
-    </div>
-
-                    <hr />
-                    
-    <div class="card">
-        <h4>Speed Challenge</h4>
-        <p>Complete in <strong>3</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 2 seconds, on average.</strong>
+            <strong>Your solution completes in 3 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -131,7 +76,6 @@ drop
                 </div>
             </div>
         </card>
-    
     
 
 </div>

@@ -32,19 +32,21 @@
 -- Target Size: 10
 -- Size: 10
 -- Target Speed: 55
--- Speed: 76
+-- Speed: 81
 
 mem1 = nearest printer
-mem2 = set 5
 a:
-if mem2 &gt; 0:
+if myitem == nothing and
+ mem4 != 5:
+	mem4 = calc mem4 + 1
 	takefrom mem1
+	write mem4
 endif
+b:
 step nw,w,sw,n,s,ne,e,se
-if c == nothing:
-	write mem2
-	drop
-	mem2 = calc mem2 - 1
+drop
+if myitem != nothing:
+	jump b
 endif
 jump a
 </pre></div>
@@ -70,7 +72,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 76 seconds, on average.</strong>
+            <strong>Your solution completes in 81 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -86,34 +88,34 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 40: Printing Etiquette 2 --
 
 -- Target Size: 10
--- Size: 17
+-- Size: 16
 -- Target Speed: 55
--- Speed: 55
+-- Speed: 54
 
 mem1 = nearest printer
-takefrom mem1
-step w
-write 5
 a:
-if c == datacube:
-	step w
-	jump a
-endif
-b:
-drop
-if mem2 == 1:
+if mem4 != 5:
+	mem4 = calc mem4 + 1
+	takefrom mem1
+	step nw,w,sw,n,s,ne,e,se
+	write mem4
+else:
 	end
 endif
-mem2 = nearest datacube
-takefrom mem1
-step mem2
-mem2 = calc mem2 - 1
-write mem2
-step n
+if mem2 == datacube:
+	step mem2
+endif
+b:
+if c == nothing:
+	drop
+	mem2 = nearest datacube
+	jump a
+endif
+step nw,w,sw,n,s,ne,e,se
 jump b
 </pre></div>
 </pre>
@@ -127,7 +129,7 @@ jump b
         <h4>Size Challenge</h4>
         <p>Use <strong>10</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 17 commands.</strong>
+            <strong>Your current solution uses 16 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -138,7 +140,7 @@ jump b
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 55 seconds, on average.</strong>
+            <strong>Your solution completes in 54 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

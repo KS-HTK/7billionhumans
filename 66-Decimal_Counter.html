@@ -18,67 +18,8 @@
         <a class="navbar-brand" href="index.html">7 Billion Humans</a>
     </nav>
     
-    <h2>13 - Injection Sites 2</h2>
+    <h2>66 - Decimal Counter</h2>
     
-        <card class="container">
-            <div class="row">
-                <div class="col-4">
-                    
-    <div class="card">
-        <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
-
--- Target Size: 10
--- Size: 9
--- Target Speed: 55
--- Speed: 198
-
-pickup s
-a:
-if e == datacube or
- c == datacube:
-	step e
-	drop
-else:
-	step w
-endif
-if e == wall or
- w == wall:
-	step s
-endif
-jump a
-</pre></div>
-</pre>
-        </div>
-    </div>
-
-                </div>
-                <div class="col-8">
-                    
-    <div class="card">
-        <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
-        <p class="text-success">
-            <strong>Your current solution uses 9 commands.</strong>
-        </p>
-        <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
-    </div>
-
-                    <hr />
-                    
-    <div class="card">
-        <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
-        <p class="text-danger">
-            <strong>Your solution completes in 198 seconds, on average.</strong>
-        </p>
-        <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
-    </div>
-
-                </div>
-            </div>
-        </card>
     
     
         <card class="container">
@@ -87,42 +28,44 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 66: Decimal Counter --
 
--- Target Size: 10
--- Size: 22
--- Target Speed: 55
--- Speed: 6
+-- Target Size: 23
+-- Size: 23
+-- Target Speed: 120
+-- Speed: 118
 
-pickup s
-if e != worker:
-	step se
-	step se
+step s
+if s == button:
+	a:
+	listenfor ready
+	if w == 1:
+	endif
 	step s
+	step n
+	tell w go
 	jump a
 endif
+pickup c
 step s
-step s
-if e != worker:
-	step se
-	jump b
-endif
-step s
-step s
-if s == nothing:
-	step s
-	jump c
-endif
-step s
+mem1 = set myitem
 b:
-step se
-step se
-step se
-step se
-c:
-a:
 drop
+if mem1 != 0:
+	tell everyone ready
+endif
+mem1 = calc mem1 + 1
+if mem1 == 10:
+	mem1 = set 0
+endif
+listenfor go
+if mem1 == 0:
+	tell w go
+endif
+pickup c
+write mem1
+jump b
 </pre></div>
 </pre>
         </div>
@@ -133,9 +76,9 @@ drop
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
-        <p class="text-danger">
-            <strong>Your current solution uses 22 commands.</strong>
+        <p>Use <strong>23</strong> or fewer commands.</p>
+        <p class="text-success">
+            <strong>Your current solution uses 23 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -144,9 +87,9 @@ drop
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>120</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 6 seconds, on average.</strong>
+            <strong>Your solution completes in 118 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -154,7 +97,6 @@ drop
                 </div>
             </div>
         </card>
-    
     
 
 </div>

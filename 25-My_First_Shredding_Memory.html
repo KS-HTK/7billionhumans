@@ -26,7 +26,7 @@
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 25: My First Shredding Memory --
 
 -- Target Size: 5
@@ -34,11 +34,11 @@
 -- Target Speed: 132
 -- Speed: 139
 
-mem1 = nearest shredder
+mem2 = nearest shredder
 a:
-mem2 = nearest datacube
-pickup mem2
-giveto mem1
+mem1 = nearest datacube
+pickup mem1
+giveto mem2
 jump a
 </pre></div>
 </pre>
@@ -79,25 +79,23 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 25: My First Shredding Memory --
 
 -- Target Size: 5
--- Size: 9
+-- Size: 8
 -- Target Speed: 132
--- Speed: 131
+-- Speed: 132
 
 mem1 = nearest shredder
 a:
 mem2 = nearest datacube
-if mem2 == nothing:
-	end
-endif
 pickup mem2
-if mem2 == nothing:
+if myitem == datacube:
+	giveto mem1
+else:
 	end
 endif
-giveto mem1
 jump a
 </pre></div>
 </pre>
@@ -111,7 +109,7 @@ jump a
         <h4>Size Challenge</h4>
         <p>Use <strong>5</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 9 commands.</strong>
+            <strong>Your current solution uses 8 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -122,7 +120,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>132</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 131 seconds, on average.</strong>
+            <strong>Your solution completes in 132 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

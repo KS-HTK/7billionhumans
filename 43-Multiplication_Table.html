@@ -21,6 +21,7 @@
     <h2>43 - Multiplication Table</h2>
     
     
+    
         <card class="container">
             <div class="row">
                 <div class="col-4">
@@ -31,92 +32,23 @@
 -- 43: Multiplication Table --
 
 -- Target Size: 11
--- Size: 20
+-- Size: 11
 -- Target Speed: 53
--- Speed: 42
+-- Speed: 50
 
-if s == wall:
+a:
+if n == 0 or
+ n != datacube:
 	step n
-endif
-step n
-step n
-step n
-step n
-step n
-step n
-step n
-step n
-step n
-step n
-mem1 = set n
-mem2 = set mem1
-a:
-step s
-pickup c
-write mem2
-drop
-mem2 = calc mem2 + mem1
-jump a
-</pre></div>
-</pre>
-        </div>
-    </div>
-
-                </div>
-                <div class="col-8">
-                    
-    <div class="card">
-        <h4>Size Challenge</h4>
-        <p>Use <strong>11</strong> or fewer commands.</p>
-        <p class="text-danger">
-            <strong>Your current solution uses 20 commands.</strong>
-        </p>
-        <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
-    </div>
-
-                    <hr />
-                    
-    <div class="card">
-        <h4>Speed Challenge</h4>
-        <p>Complete in <strong>53</strong> or fewer seconds, averaged over 25 random tests.</p>
-        <p class="text-success">
-            <strong>Your solution completes in 42 seconds, on average.</strong>
-        </p>
-        <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
-    </div>
-
-                </div>
-            </div>
-        </card>
-    
-    
-        <card class="container">
-            <div class="row">
-                <div class="col-4">
-                    
-    <div class="card">
-        <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
--- 43: Multiplication Table --
-
--- Target Size: 11
--- Size: 10
--- Target Speed: 53
--- Speed: 49
-
-a:
-step n
-if n != datacube or
- c != nothing or
- s != datacube:
 	jump a
+else:
+	mem1 = set n
 endif
-mem1 = set n
 b:
-mem2 = calc mem2 + mem1
 step s
 pickup c
-write mem2
+mem4 = calc mem4 + mem1
+write mem4
 drop
 jump b
 </pre></div>
@@ -131,7 +63,7 @@ jump b
         <h4>Size Challenge</h4>
         <p>Use <strong>11</strong> or fewer commands.</p>
         <p class="text-success">
-            <strong>Your current solution uses 10 commands.</strong>
+            <strong>Your current solution uses 11 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -142,7 +74,7 @@ jump b
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>53</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 49 seconds, on average.</strong>
+            <strong>Your solution completes in 50 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

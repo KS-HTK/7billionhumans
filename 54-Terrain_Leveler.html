@@ -18,7 +18,7 @@
         <a class="navbar-brand" href="index.html">7 Billion Humans</a>
     </nav>
     
-    <h2>13 - Injection Sites 2</h2>
+    <h2>54 - Terrain Leveler</h2>
     
         <card class="container">
             <div class="row">
@@ -26,28 +26,49 @@
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 54: Terrain Leveler --
 
--- Target Size: 10
--- Size: 9
--- Target Speed: 55
--- Speed: 198
+-- Target Size: 26
+-- Size: 25
+-- Target Speed: 90
+-- Speed: 326
 
-pickup s
 a:
-if e == datacube or
- c == datacube:
-	step e
-	drop
+if n != datacube:
+	step n
+	jump a
+endif
+if nw == datacube:
+	listenfor hi
+endif
+step n
+mem3 = set c
+b:
+c:
+mem1 = set e
+d:
+if mem4 == 0:
+	mem2 = calc mem2 + c
 else:
-	step w
+	pickup c
+	write mem2
+	drop
 endif
-if e == wall or
- w == wall:
-	step s
+if n != nothing:
+	step n
+	jump d
 endif
-jump a
+if mem1 != nothing:
+	step mem1
+	jump c
+endif
+mem2 = calc mem2 / 49
+mem4 = calc mem4 + 1
+if mem4 == 1:
+	step mem3
+	jump b
+endif
 </pre></div>
 </pre>
         </div>
@@ -58,9 +79,9 @@ jump a
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
+        <p>Use <strong>26</strong> or fewer commands.</p>
         <p class="text-success">
-            <strong>Your current solution uses 9 commands.</strong>
+            <strong>Your current solution uses 25 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -69,9 +90,9 @@ jump a
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>90</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 198 seconds, on average.</strong>
+            <strong>Your solution completes in 326 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -87,42 +108,68 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 54: Terrain Leveler --
 
--- Target Size: 10
--- Size: 22
--- Target Speed: 55
--- Speed: 6
+-- Target Size: 26
+-- Size: 42
+-- Target Speed: 90
+-- Speed: 88
 
-pickup s
-if e != worker:
-	step se
-	step se
-	step s
+a:
+if n != datacube:
+	step n
 	jump a
 endif
-step s
-step s
-if e != worker:
-	step se
+if nw == datacube:
+	listenfor hi
+endif
+tell everyone hi
+step n
+mem3 = set c
+b:
+mem2 = calc mem2 + c
+if n != nothing:
+	step n
 	jump b
 endif
-step s
-step s
-if s == nothing:
-	step s
-	jump c
-endif
-step s
-b:
-step se
-step se
-step se
-step se
-c:
-a:
+pickup mem3
+write mem2
 drop
+step s
+if nw == datacube:
+	listenfor ready
+else:
+	step n
+	mem2 = set c
+	c:
+	if e == datacube:
+		step e
+		mem2 = calc mem2 + c
+		jump c
+	endif
+	mem2 = calc mem2 / 49
+	d:
+	pickup c
+	write mem2
+	drop
+	if w == datacube:
+		step w
+		jump d
+	endif
+	tell everyone ready
+	step s
+endif
+step n
+mem2 = set c
+e:
+step n
+pickup c
+write mem2
+drop
+if n == datacube:
+	jump e
+endif
 </pre></div>
 </pre>
         </div>
@@ -133,9 +180,9 @@ drop
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
+        <p>Use <strong>26</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 22 commands.</strong>
+            <strong>Your current solution uses 42 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -144,9 +191,9 @@ drop
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>90</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 6 seconds, on average.</strong>
+            <strong>Your solution completes in 88 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

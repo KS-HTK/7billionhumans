@@ -18,7 +18,7 @@
         <a class="navbar-brand" href="index.html">7 Billion Humans</a>
     </nav>
     
-    <h2>13 - Injection Sites 2</h2>
+    <h2>65 - Defrag Ordered</h2>
     
         <card class="container">
             <div class="row">
@@ -26,28 +26,51 @@
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 65: Defrag Ordered --
 
--- Target Size: 10
--- Size: 9
--- Target Speed: 55
--- Speed: 198
+-- Target Size: 25
+-- Size: 23
+-- Target Speed: 500
+-- Speed: 675
 
-pickup s
 a:
-if e == datacube or
- c == datacube:
-	step e
-	drop
-else:
+b:
+c:
+if n != hole:
+	step n
+	jump c
+endif
+d:
+e:
+if w != hole:
 	step w
+	jump e
 endif
-if e == wall or
- w == wall:
+f:
+if c == nothing:
+	if myitem == datacube:
+		drop
+		mem1 = set 0
+		jump b
+	else:
+		mem1 = set 1
+	endif
+endif
+if c == datacube:
+	if myitem != datacube and
+	 mem1 == 1:
+		pickup c
+		jump a
+	endif
+endif
+if e != hole:
+	step e
+	jump f
+else:
 	step s
+	jump d
 endif
-jump a
 </pre></div>
 </pre>
         </div>
@@ -58,9 +81,9 @@ jump a
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
+        <p>Use <strong>25</strong> or fewer commands.</p>
         <p class="text-success">
-            <strong>Your current solution uses 9 commands.</strong>
+            <strong>Your current solution uses 23 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -69,9 +92,9 @@ jump a
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>500</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 198 seconds, on average.</strong>
+            <strong>Your solution completes in 675 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -87,42 +110,57 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 65: Defrag Ordered --
 
--- Target Size: 10
--- Size: 22
--- Target Speed: 55
--- Speed: 6
+-- Target Size: 25
+-- Size: 27
+-- Target Speed: 500
+-- Speed: 351
 
-pickup s
-if e != worker:
-	step se
-	step se
-	step s
-	jump a
-endif
-step s
-step s
-if e != worker:
-	step se
+a:
+if mem2 == datacube:
+	step mem2
 	jump b
 endif
-step s
-step s
-if s == nothing:
-	step s
+c:
+if n != hole:
+	step n
 	jump c
 endif
-step s
+d:
+e:
+if w != hole:
+	step w
+	jump e
+endif
 b:
-step se
-step se
-step se
-step se
-c:
-a:
-drop
+f:
+g:
+if c == nothing:
+	if myitem == datacube:
+		drop
+		mem2 = set c
+		mem1 = set 0
+		jump g
+	else:
+		mem1 = set 1
+	endif
+endif
+if c == datacube:
+	if myitem != datacube and
+	 mem1 == 1:
+		pickup c
+		jump a
+	endif
+endif
+if e != hole:
+	step e
+	jump f
+else:
+	step s
+	jump d
+endif
 </pre></div>
 </pre>
         </div>
@@ -133,9 +171,9 @@ drop
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
+        <p>Use <strong>25</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 22 commands.</strong>
+            <strong>Your current solution uses 27 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -144,9 +182,9 @@ drop
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>500</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 6 seconds, on average.</strong>
+            <strong>Your solution completes in 351 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

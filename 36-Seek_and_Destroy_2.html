@@ -30,21 +30,23 @@
 -- 36: Seek and Destroy 2 --
 
 -- Target Size: 10
--- Size: 8
+-- Size: 9
 -- Target Speed: 145
--- Speed: 162
+-- Speed: 166
 
-mem2 = nearest shredder
+mem4 = nearest shredder
 a:
-step n
-if c &lt;= mem1 or
- mem1 != datacube:
-	mem1 = set c
+b:
+if n != wall:
+	step n
+	if mem1 != datacube or
+	 mem1 &gt; c:
+		mem1 = set c
+	endif
+	jump b
 endif
-if n == wall:
-	pickup mem1
-	giveto mem2
-endif
+pickup mem1
+giveto mem4
 jump a
 </pre></div>
 </pre>
@@ -58,7 +60,7 @@ jump a
         <h4>Size Challenge</h4>
         <p>Use <strong>10</strong> or fewer commands.</p>
         <p class="text-success">
-            <strong>Your current solution uses 8 commands.</strong>
+            <strong>Your current solution uses 9 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -69,7 +71,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>145</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 162 seconds, on average.</strong>
+            <strong>Your solution completes in 166 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -89,27 +91,43 @@ jump a
 -- 36: Seek and Destroy 2 --
 
 -- Target Size: 10
--- Size: 12
+-- Size: 25
 -- Target Speed: 145
--- Speed: 136
+-- Speed: 123
 
-mem2 = nearest shredder
+mem4 = nearest shredder
 a:
 mem1 = set 99
-step n
+mem2 = set 99
+mem3 = set 99
 b:
-c:
-step n
-if c &lt;= mem1 and
- c == datacube:
-	mem1 = set c
-	jump c
-endif
 if n != wall:
+	step n
+	if mem3 &gt; c or
+	 mem3 != datacube or
+	 mem2 != datacube or
+	 mem1 != datacube:
+		if mem1 &gt; c:
+			mem3 = set mem2
+			mem2 = set mem1
+			mem1 = set c
+		else:
+			if mem2 &gt; c:
+				mem3 = set mem2
+				mem2 = set c
+			else:
+				mem3 = set c
+			endif
+		endif
+	endif
 	jump b
 endif
 pickup mem1
-giveto mem2
+giveto mem4
+pickup mem2
+giveto mem4
+pickup mem3
+giveto mem4
 jump a
 </pre></div>
 </pre>
@@ -123,7 +141,7 @@ jump a
         <h4>Size Challenge</h4>
         <p>Use <strong>10</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 12 commands.</strong>
+            <strong>Your current solution uses 25 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -134,7 +152,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>145</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 136 seconds, on average.</strong>
+            <strong>Your solution completes in 123 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

@@ -87,21 +87,21 @@ jump b
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 23: Sorting Hall --
 
 -- Target Size: 6
 -- Size: 6
 -- Target Speed: 26
--- Speed: 24
+-- Speed: 25
 
 pickup s
 a:
-if myitem &gt; e:
-	step e
-endif
 if myitem &lt; w:
 	step w
+endif
+if myitem &gt; e:
+	step e
 endif
 jump a
 </pre></div>
@@ -127,7 +127,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>26</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 24 seconds, on average.</strong>
+            <strong>Your solution completes in 25 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

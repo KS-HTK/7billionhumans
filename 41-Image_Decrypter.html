@@ -32,18 +32,18 @@
 -- Target Size: 8
 -- Size: 8
 -- Target Speed: 15
--- Speed: 69
+-- Speed: 31
 
-mem1 = set w
-pickup mem1
+pickup w
 a:
 step w
-mem1 = calc mem1 - 1
-if mem1 &lt;= 0:
-	drop
-	step ne
+if mem1 &lt; myitem:
+	mem1 = calc mem1 + 1
+	jump a
 endif
-jump a
+drop
+mem1 = nearest hole
+step mem1
 </pre></div>
 </pre>
         </div>
@@ -67,7 +67,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>15</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 69 seconds, on average.</strong>
+            <strong>Your solution completes in 31 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -87,64 +87,51 @@ jump a
 -- 41: Image Decrypter --
 
 -- Target Size: 8
--- Size: 35
+-- Size: 29
 -- Target Speed: 15
--- Speed: 9
+-- Speed: 8
 
-mem1 = set w
-pickup mem1
-if mem1 == 1:
-	jump a
+pickup w
+step w
+if myitem &gt; 0:
+	step w
 endif
-if mem1 == 3:
-	jump b
+if myitem &gt; 1:
+	step w
 endif
-if mem1 == 4:
-	jump c
+if myitem &gt; 2:
+	step w
 endif
-if mem1 == 5:
-	jump d
+if myitem &gt; 3:
+	step w
 endif
-if mem1 == 6:
-	jump e
+if myitem &gt; 4:
+	step w
 endif
-if mem1 == 7:
-	jump f
+if myitem &gt; 5:
+	step w
 endif
-if mem1 == 9:
-	jump g
+if myitem &gt; 6:
+	step w
 endif
-if mem1 == 10:
-	jump h
+if myitem &gt; 7:
+	step w
 endif
-if mem1 == 11:
-	jump i
+if myitem &gt; 8:
+	step w
 endif
-step w
-i:
-step w
-h:
-step w
-g:
-step w
-step w
-f:
-step w
-e:
-step w
-d:
-step w
-c:
-step w
-b:
-step w
-step w
-a:
-step w
+if myitem &gt; 9:
+	step w
+endif
+if myitem &gt; 10:
+	step w
+endif
+if myitem &gt; 11:
+	step w
+endif
 drop
-j:
-step n
-jump j
+mem1 = nearest hole
+step mem1
 </pre></div>
 </pre>
         </div>
@@ -157,7 +144,7 @@ jump j
         <h4>Size Challenge</h4>
         <p>Use <strong>8</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 35 commands.</strong>
+            <strong>Your current solution uses 29 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -168,7 +155,7 @@ jump j
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>15</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 9 seconds, on average.</strong>
+            <strong>Your solution completes in 8 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

@@ -26,15 +26,19 @@
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 10: Emergency Escapades --
 
 -- Target Size: 9
 -- Size: 9
 -- Target Speed: 25
--- Speed: 204
+-- Speed: 203
 
 a:
+if c == nothing or
+ c == 4:
+	step w
+endif
 if c == 1:
 	step n
 endif
@@ -43,10 +47,6 @@ if c == 2:
 endif
 if c == 3:
 	step s
-endif
-if c == 4 or
- c != datacube:
-	step w
 endif
 jump a
 </pre></div>
@@ -72,7 +72,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>25</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 204 seconds, on average.</strong>
+            <strong>Your solution completes in 203 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -88,73 +88,49 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 10: Emergency Escapades --
 
 -- Target Size: 9
--- Size: 40
+-- Size: 28
 -- Target Speed: 25
--- Speed: 19
+-- Speed: 16
 
 a:
-step w
-step w
-b:
-step w
-if c == 1:
+if w != datacube:
+	step w
+	jump a
+endif
+if n == hole and
+ sw == 1:
+	step sw
+	jump b
+else:
 	if s == wall:
 		step n
 		step nw
-		jump c
-	endif
-	if sw != hole:
-		step sw
-		jump d
-	endif
-	if nw != hole:
-		step nw
-		jump e
-	endif
-	if w != hole:
+	else:
 		step w
-		jump f
+		if w == hole:
+			step n
+		endif
 	endif
 endif
-jump b
-if c == 3:
-	f:
-	c:
-	e:
-	d:
-	step sw
-	step s
-	step sw
-	g:
-	step w
-	step w
-	step w
-	step nw
-	step n
-	step n
-	step n
-	step n
-	step nw
-	jump g
-endif
-if w == hole and
- sw != hole:
-	step sw
-endif
-if w == hole and
- nw != hole:
-	step nw
-endif
-if w == hole and
- s == wall:
-	step n
-	step nw
-endif
-jump a
+b:
+step w
+step sw
+step s
+step sw
+step w
+step w
+step w
+step nw
+step n
+step n
+step n
+step nw
+step n
+step n
 </pre></div>
 </pre>
         </div>
@@ -167,7 +143,7 @@ jump a
         <h4>Size Challenge</h4>
         <p>Use <strong>9</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 40 commands.</strong>
+            <strong>Your current solution uses 28 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -178,7 +154,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>25</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 19 seconds, on average.</strong>
+            <strong>Your solution completes in 16 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

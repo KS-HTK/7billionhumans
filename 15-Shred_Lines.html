@@ -21,6 +21,98 @@
     <h2>15 - Shred Lines</h2>
     
     
+        <card class="container">
+            <div class="row">
+                <div class="col-4">
+                    
+    <div class="card">
+        <div class="col-xs-6">
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
+-- 15: Shred Lines --
+
+-- Target Size: 9
+-- Size: 36
+-- Target Speed: 23
+-- Speed: 18
+
+step n
+a:
+if n != datacube:
+	step n
+	jump a
+endif
+pickup n
+step s
+b:
+if s != shredder:
+	step s
+	jump b
+endif
+giveto s
+step n
+step n
+c:
+if n != datacube:
+	step n
+	jump c
+endif
+pickup n
+step s
+step s
+d:
+if s != shredder:
+	step s
+	jump d
+endif
+giveto s
+step n
+step n
+step n
+step n
+if n != datacube:
+	step n
+endif
+pickup n
+step s
+step s
+step s
+step s
+if s != shredder:
+	step s
+endif
+giveto s
+</pre></div>
+</pre>
+        </div>
+    </div>
+
+                </div>
+                <div class="col-8">
+                    
+    <div class="card">
+        <h4>Size Challenge</h4>
+        <p>Use <strong>9</strong> or fewer commands.</p>
+        <p class="text-danger">
+            <strong>Your current solution uses 36 commands.</strong>
+        </p>
+        <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
+    </div>
+
+                    <hr />
+                    
+    <div class="card">
+        <h4>Speed Challenge</h4>
+        <p>Complete in <strong>23</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p class="text-success">
+            <strong>Your solution completes in 18 seconds, on average.</strong>
+        </p>
+        <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
+    </div>
+
+                </div>
+            </div>
+        </card>
+    
     
         <card class="container">
             <div class="row">

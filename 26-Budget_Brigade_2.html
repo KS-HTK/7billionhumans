@@ -26,27 +26,23 @@
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 26: Budget Brigade 2 --
 
 -- Target Size: 10
--- Size: 10
+-- Size: 9
 -- Target Speed: 70
--- Speed: 242
+-- Speed: 161
 
 a:
-if myitem &gt;= 50 and
- e == worker:
-	giveto e
-endif
-if myitem &lt; 50 and
- w == worker:
-	giveto w
-endif
-if myitem == datacube or
- s == printer:
+if myitem != datacube and
+ s != shredder:
 	takefrom s
-	giveto n
+endif
+if myitem &gt;= 50:
+	giveto e
+else:
+	giveto w
 endif
 if s == shredder and
  myitem == datacube:
@@ -65,7 +61,7 @@ jump a
         <h4>Size Challenge</h4>
         <p>Use <strong>10</strong> or fewer commands.</p>
         <p class="text-success">
-            <strong>Your current solution uses 10 commands.</strong>
+            <strong>Your current solution uses 9 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -76,7 +72,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>70</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 242 seconds, on average.</strong>
+            <strong>Your solution completes in 161 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -92,17 +88,19 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
 -- 26: Budget Brigade 2 --
 
 -- Target Size: 10
--- Size: 23
+-- Size: 19
 -- Target Speed: 70
--- Speed: 67
+-- Speed: 69
 
 if s == printer:
 	a:
-	takefrom s
+	if myitem != datacube:
+		takefrom s
+	endif
 	giveto n
 	jump a
 endif
@@ -113,33 +111,22 @@ if s == shredder:
 	endif
 	jump b
 endif
-if nw == worker and
- ne == worker:
+if n == worker:
 	c:
-	if myitem &gt;= 50:
-		giveto ne
-	endif
-	if myitem &lt; 50:
-		giveto nw
+	if myitem == datacube:
+		giveto n
 	endif
 	jump c
 endif
-if w == worker and
- e == worker:
-	d:
+d:
+if myitem == datacube:
 	if myitem &gt;= 50:
 		giveto e
-	endif
-	if myitem &lt; 50:
+	else:
 		giveto w
 	endif
-	jump d
 endif
-e:
-if myitem == datacube:
-	giveto n
-endif
-jump e
+jump d
 </pre></div>
 </pre>
         </div>
@@ -152,7 +139,7 @@ jump e
         <h4>Size Challenge</h4>
         <p>Use <strong>10</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 23 commands.</strong>
+            <strong>Your current solution uses 19 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -163,7 +150,7 @@ jump e
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>70</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 67 seconds, on average.</strong>
+            <strong>Your solution completes in 69 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

@@ -18,7 +18,7 @@
         <a class="navbar-brand" href="index.html">7 Billion Humans</a>
     </nav>
     
-    <h2>13 - Injection Sites 2</h2>
+    <h2>53 - 100 Cubes on the Floor</h2>
     
         <card class="container">
             <div class="row">
@@ -26,28 +26,36 @@
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 53: 100 Cubes on the Floor --
 
--- Target Size: 10
--- Size: 9
--- Target Speed: 55
--- Speed: 198
+-- Target Size: 16
+-- Size: 15
+-- Target Speed: 80
+-- Speed: 97
 
-pickup s
 a:
-if e == datacube or
- c == datacube:
-	step e
-	drop
-else:
+if w != datacube:
 	step w
+	jump a
 endif
-if e == wall or
- w == wall:
-	step s
+b:
+if w == datacube and
+ nw == 0:
+	mem1 = set nw
+	jump b
 endif
-jump a
+mem1 = calc mem1 + 1
+c:
+step w
+pickup c
+write mem1
+drop
+mem1 = calc mem1 + 10
+mem2 = calc mem2 + 1
+if mem2 &lt; 10:
+	jump c
+endif
 </pre></div>
 </pre>
         </div>
@@ -58,9 +66,9 @@ jump a
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
+        <p>Use <strong>16</strong> or fewer commands.</p>
         <p class="text-success">
-            <strong>Your current solution uses 9 commands.</strong>
+            <strong>Your current solution uses 15 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -69,9 +77,9 @@ jump a
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>80</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 198 seconds, on average.</strong>
+            <strong>Your solution completes in 97 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -87,42 +95,51 @@ jump a
                     
     <div class="card">
         <div class="col-xs-6">
-            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2056) --
--- 13: Injection Sites 2 --
+            <pre><div class="highlight"><pre><span></span>-- 7 Billion Humans (2053) --
+-- 53: 100 Cubes on the Floor --
 
--- Target Size: 10
--- Size: 22
--- Target Speed: 55
--- Speed: 6
+-- Target Size: 16
+-- Size: 26
+-- Target Speed: 80
+-- Speed: 64
 
-pickup s
-if e != worker:
-	step se
-	step se
-	step s
+a:
+if w != datacube:
+	step w
 	jump a
 endif
-step s
-step s
-if e != worker:
-	step se
+if n == wall:
 	jump b
 endif
-step s
-step s
-if s == nothing:
-	step s
+if s == wall:
+	mem1 = set 90
 	jump c
 endif
-step s
+d:
+if n == datacube:
+	mem1 = calc n + 10
+else:
+	if s == datacube:
+		mem1 = calc s - 10
+	else:
+		jump d
+	endif
+endif
 b:
-step se
-step se
-step se
-step se
 c:
-a:
+pickup w
+write mem1
 drop
+mem1 = calc mem1 + 1
+e:
+step w
+pickup w
+write mem1
+drop
+mem1 = calc mem1 + 1
+if w != wall:
+	jump e
+endif
 </pre></div>
 </pre>
         </div>
@@ -133,9 +150,9 @@ drop
                     
     <div class="card">
         <h4>Size Challenge</h4>
-        <p>Use <strong>10</strong> or fewer commands.</p>
+        <p>Use <strong>16</strong> or fewer commands.</p>
         <p class="text-danger">
-            <strong>Your current solution uses 22 commands.</strong>
+            <strong>Your current solution uses 26 commands.</strong>
         </p>
         <p>Shortest known solution with >50% success at time of release: <strong></strong> cmds</p>
     </div>
@@ -144,9 +161,9 @@ drop
                     
     <div class="card">
         <h4>Speed Challenge</h4>
-        <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
+        <p>Complete in <strong>80</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 6 seconds, on average.</strong>
+            <strong>Your solution completes in 64 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>

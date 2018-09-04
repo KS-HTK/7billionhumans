@@ -32,18 +32,20 @@
 -- Target Size: 9
 -- Size: 9
 -- Target Speed: 55
--- Speed: 74
+-- Speed: 63
 
 mem1 = nearest printer
-mem2 = set 5
 a:
-if mem2 &gt; 0:
+if myitem == nothing and
+ mem4 != 5:
+	mem4 = calc mem4 + 1
 	takefrom mem1
 endif
+b:
 step nw,w,sw,n,s,ne,e,se
-if c == nothing:
-	drop
-	mem2 = calc mem2 - 1
+drop
+if myitem != nothing:
+	jump b
 endif
 jump a
 </pre></div>
@@ -69,7 +71,7 @@ jump a
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-danger">
-            <strong>Your solution completes in 74 seconds, on average.</strong>
+            <strong>Your solution completes in 63 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
@@ -91,26 +93,27 @@ jump a
 -- Target Size: 9
 -- Size: 15
 -- Target Speed: 55
--- Speed: 43
+-- Speed: 54
 
+mem4 = set 5
 mem1 = nearest printer
-takefrom mem1
-step w
-step w
 a:
-if c == datacube:
-	step n
-	jump a
-endif
-b:
-drop
-if w == wall:
+if mem4 != 0:
+	takefrom mem1
+else:
 	end
 endif
-mem2 = nearest datacube
-takefrom mem1
-step mem2
-step w
+if mem2 == datacube:
+	step mem2
+endif
+b:
+if c == nothing:
+	drop
+	mem2 = nearest datacube
+	mem4 = calc mem4 - 1
+	jump a
+endif
+step nw,w,sw,n,s,ne,e,se
 jump b
 </pre></div>
 </pre>
@@ -135,7 +138,7 @@ jump b
         <h4>Speed Challenge</h4>
         <p>Complete in <strong>55</strong> or fewer seconds, averaged over 25 random tests.</p>
         <p class="text-success">
-            <strong>Your solution completes in 43 seconds, on average.</strong>
+            <strong>Your solution completes in 54 seconds, on average.</strong>
         </p>
         <p>Fastest known solution with >50% success at time of release: <strong></strong> secs</p>
     </div>
