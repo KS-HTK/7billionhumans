@@ -2,15 +2,14 @@
 -- 9: Dynamic Angles --
 
 -- Target Size: 5
--- Size: 6
+-- Size: 5
 -- Target Speed: 6
 -- Speed: 5
 
-step s
-pickup c
+pickup s
 a:
+step s
 if nw == datacube:
 	drop
 endif
-step s
 jump a

@@ -6,7 +6,6 @@
 -- Target Speed: 7
 -- Speed: 7
 
-comment 2
 pickup c
 a:
 if nw == worker:
@@ -14,7 +13,7 @@ if nw == worker:
 	drop
 endif
 if sw == worker or
- w == wall:
+ sw == wall:
 	step n
 	drop
 endif

@@ -2,21 +2,21 @@
 -- 36: Seek and Destroy 2 --
 
 -- Target Size: 10
--- Size: 8
+-- Size: 9
 -- Target Speed: 145
--- Speed: 162
+-- Speed: 166
 
-mem2 = nearest shredder
+mem4 = nearest shredder
 a:
-step n
-if c <= mem1 or
- mem1 != datacube:
-	mem1 = set c
+b:
+if n != wall:
+	step n
+	if mem1 != datacube or
+	 mem1 > c:
+		mem1 = set c
+	endif
+	jump b
 endif
-if n == wall:
-	pickup mem1
-	giveto mem2
-endif
+pickup mem1
+giveto mem4
 jump a
-
-

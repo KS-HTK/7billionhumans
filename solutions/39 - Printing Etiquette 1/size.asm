@@ -4,17 +4,19 @@
 -- Target Size: 9
 -- Size: 9
 -- Target Speed: 55
--- Speed: 74
+-- Speed: 63
 
 mem1 = nearest printer
-mem2 = set 5
 a:
-if mem2 > 0:
+if myitem == nothing and
+ mem4 != 5:
+	mem4 = calc mem4 + 1
 	takefrom mem1
 endif
+b:
 step nw,w,sw,n,s,ne,e,se
-if c == nothing:
-	drop
-	mem2 = calc mem2 - 1
+drop
+if myitem != nothing:
+	jump b
 endif
 jump a

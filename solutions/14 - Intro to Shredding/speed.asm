@@ -1,4 +1,4 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 14: Intro to Shredding --
 
 -- Target Size: 4
@@ -6,9 +6,9 @@
 -- Target Speed: 3
 -- Speed: 2
 
-if s == datacube:
-	pickup s
-	step s
-	step s
+step s
+step s
+if n == datacube:
+	pickup n
 	giveto s
 endif

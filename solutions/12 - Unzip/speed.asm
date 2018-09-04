@@ -8,17 +8,16 @@
 
 pickup c
 a:
-if w != worker or
- se == worker:
-	step n
-	drop
-endif
-if w != worker or
+if nw == worker or
  ne == worker or
  e == wall:
 	step s
 	drop
 endif
+if se == worker or
+ sw == worker or
+ w == wall:
+	step n
+	drop
+endif
 jump a
-
-

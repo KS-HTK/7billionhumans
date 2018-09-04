@@ -1,14 +1,17 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 32: Creative Writhing --
 
 -- Target Size: 6
--- Size: 5
+-- Size: 6
 -- Target Speed: 39
--- Speed: 1103
+-- Speed: 273
 
 a:
-step w,n,s,e
-pickup c
-write 99
-drop
+step nw,w,sw,n,s,ne,e,se
+if c == datacube and
+ c == 0:
+	pickup c
+	write 99
+	drop
+endif
 jump a

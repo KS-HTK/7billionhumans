@@ -1,4 +1,4 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 19: Content Creators Bug Fix --
 
 -- Target Size: 4
@@ -6,8 +6,8 @@
 -- Target Speed: 27
 -- Speed: 26
 
-step e
+takefrom s
 a:
-takefrom sw
 giveto se
+takefrom sw
 jump a

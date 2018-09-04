@@ -1,20 +1,17 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 33: Data Backup Day --
 
 -- Target Size: 8
--- Size: 9
+-- Size: 8
 -- Target Speed: 3
--- Speed: 2
+-- Speed: 3
 
-if w > e:
+mem1 = set w
+mem2 = set e
+if mem1 < mem2:
 	mem1 = set e
-	step w
-else:
-	mem1 = set w
-	step e
+	mem2 = set w
 endif
-pickup c
-write mem1
+pickup mem1
+write mem2
 drop
-
-

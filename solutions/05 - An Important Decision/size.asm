@@ -1,4 +1,4 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 5: An Important Decision --
 
 -- Target Size: 5
@@ -6,11 +6,11 @@
 -- Target Speed: 3
 -- Speed: 2
 
-if w == 1:
+if e == datacube:
 	a:
-	step w
+	step e
 	jump a
 endif
 b:
-step e
+step w
 jump b

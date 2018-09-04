@@ -40,5 +40,3 @@ if w != worker or
 else:
 	jump a
 endif
-
-

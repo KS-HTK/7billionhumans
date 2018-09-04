@@ -2,61 +2,48 @@
 -- 41: Image Decrypter --
 
 -- Target Size: 8
--- Size: 35
+-- Size: 29
 -- Target Speed: 15
--- Speed: 9
+-- Speed: 8
 
-mem1 = set w
-pickup mem1
-if mem1 == 1:
-	jump a
+pickup w
+step w
+if myitem > 0:
+	step w
 endif
-if mem1 == 3:
-	jump b
+if myitem > 1:
+	step w
 endif
-if mem1 == 4:
-	jump c
+if myitem > 2:
+	step w
 endif
-if mem1 == 5:
-	jump d
+if myitem > 3:
+	step w
 endif
-if mem1 == 6:
-	jump e
+if myitem > 4:
+	step w
 endif
-if mem1 == 7:
-	jump f
+if myitem > 5:
+	step w
 endif
-if mem1 == 9:
-	jump g
+if myitem > 6:
+	step w
 endif
-if mem1 == 10:
-	jump h
+if myitem > 7:
+	step w
 endif
-if mem1 == 11:
-	jump i
+if myitem > 8:
+	step w
 endif
-step w
-i:
-step w
-h:
-step w
-g:
-step w
-step w
-f:
-step w
-e:
-step w
-d:
-step w
-c:
-step w
-b:
-step w
-step w
-a:
-step w
+if myitem > 9:
+	step w
+endif
+if myitem > 10:
+	step w
+endif
+if myitem > 11:
+	step w
+endif
 drop
-j:
-step n
-jump j
+mem1 = nearest hole
+step mem1

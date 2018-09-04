@@ -4,7 +4,7 @@
 -- Target Size: 8
 -- Size: 8
 -- Target Speed: 32
--- Speed: 20
+-- Speed: 21
 
 step sw
 a:
@@ -18,5 +18,3 @@ if myitem < 50:
 	giveto sw
 	jump b
 endif
-
-

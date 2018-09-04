@@ -1,4 +1,4 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 20: Reverse Line --
 
 -- Target Size: 9
@@ -8,15 +8,15 @@
 
 pickup s
 a:
-if sw != hole:
+if w == worker:
 	step w
 	jump a
 endif
 step s
 b:
-if e != datacube and
- e != hole:
-	step e
-	jump b
+if e == hole or
+ e == datacube:
+	drop
 endif
-drop
+step e
+jump b

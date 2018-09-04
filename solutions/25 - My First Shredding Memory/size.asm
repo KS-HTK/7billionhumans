@@ -1,4 +1,4 @@
--- 7 Billion Humans (2053) --
+-- 7 Billion Humans (2056) --
 -- 25: My First Shredding Memory --
 
 -- Target Size: 5
@@ -6,9 +6,9 @@
 -- Target Speed: 132
 -- Speed: 139
 
-mem1 = nearest shredder
+mem2 = nearest shredder
 a:
-mem2 = nearest datacube
-pickup mem2
-giveto mem1
+mem1 = nearest datacube
+pickup mem1
+giveto mem2
 jump a

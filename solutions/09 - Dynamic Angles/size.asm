@@ -13,5 +13,3 @@ if nw == datacube:
 	drop
 endif
 jump a
-
-

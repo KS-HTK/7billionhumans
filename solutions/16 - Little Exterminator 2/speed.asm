@@ -14,8 +14,8 @@ if w == datacube:
 	pickup w
 	step e
 	step e
-	giveto se
-	step ne
+	step e
+	giveto s
 else:
 	step s
 	if w == datacube:
@@ -29,10 +29,8 @@ else:
 		pickup w
 		step e
 		step e
-		step e
 		step se
+		step e
 		giveto e
 	endif
 endif
-
-
