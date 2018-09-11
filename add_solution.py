@@ -1,9 +1,11 @@
 #!/usr/bin/env python3.6
-
+import json
 from pathlib import Path
 import subprocess
 import re
 import math
+
+from antlr.SevenBillionHumansParser import SevenBillionHumansParser
 
 BASE_PATH = Path('./solutions')
 
@@ -11,7 +13,7 @@ BASE_PATH = Path('./solutions')
 def get_sourcecode():
     source = subprocess.run(['xclip', '-out', '-selection', 'clipboard'], stdout=subprocess.PIPE).stdout
     if source.startswith(b'-- 7 Billion Humans'):
-        return source.decode().strip().split('\n')
+        return source.decode().split('\n')
 
 
 def read_integer(msg):
@@ -24,17 +26,24 @@ def read_integer(msg):
         return n
 
 
-def add_scores(source, target_size, size, target_speed, speed):
+def add_scores(source, size, speed, author=None):
     source.insert(3, '')
     source.insert(3, f'-- Speed: {speed}')
-    source.insert(3, f'-- Target Speed: {target_speed}')
     source.insert(3, f'-- Size: {size}')
-    source.insert(3, f'-- Target Size: {target_size}')
+    if author:
+        source.insert(3, f'-- Author: {author}')
 
 
 def get_details(source):
     n, name = re.search('(\d{1,2}): (.+) --', source[1]).groups()
     return int(n), name
+
+
+def get_target_scores(year):
+    with open('challenges.json') as f:
+        challenges = json.load(f)
+    scores = challenges[str(year)]
+    return scores['size_challenge'], scores['speed_challenge'], scores['shortest_known'], scores['fastest_known']
 
 
 def get_score(path, category):
@@ -48,26 +57,34 @@ def get_score(path, category):
     return math.inf
 
 
-def save(source, category, path, score=math.inf):
+def save(source, dirname, size, speed):
+
+    path = dirname / f'size-{size}_speed-{speed}.asm'
+
     if path.exists():
-        if score == math.inf:
-            print(f'Already exists, not overwriting:            {str(path):>40}')
-            return
-        old_score = get_score(path, category)
-        if score > old_score:
-            print(f'Already exists, current solution is better: {str(path):>40}')
-            return
-    if not path.parent.exists():
-        path.parent.mkdir()
+        print('Already exists, not overwriting')
+        return
+    if not dirname.exists():
+        dirname.mkdir()
+
+    other_scores = [(get_score(path, 'size'), get_score(path, 'speed'), path) for path in dirname.glob('*.asm')]
+
+    if any((other_size <= size and other_speed <= speed for other_size, other_speed, _ in other_scores)):
+        print('Your solution is dominated by another solution, not saving')
+        return
+
     with path.open('w') as f:
         f.write('\n'.join(source))
+    subprocess.call(['git', 'add', path])
     print(f'Saved:                                      {str(path):>40}')
 
+    for other_size, other_speed, path in other_scores:
+        if size <= other_size and speed <= other_speed:
+            print(f'Removed:                                     {str(path):>40}')
+            subprocess.call(['git', 'rm', '-f', path])
 
-def add_solution():
-    target_size = read_integer('Target Size: ')
-    size = read_integer('Size: ')
-    target_speed = read_integer('Target Speed: ')
+
+def add_solution(author):
     speed = read_integer('Speed: ')
 
     source = None
@@ -75,23 +92,20 @@ def add_solution():
         input('Copy the sourcecode to the clipboard and press enter\n')
         source = get_sourcecode()
 
-    add_scores(source, target_size, size, target_speed, speed)
+    size = SevenBillionHumansParser(source='\n'.join(source)).cmd_size
+    add_scores(source, size, speed, author)
 
     level_id, level_name = get_details(source)
-
     print()
     dirname = f'{level_id:02} - {level_name}'
-    if size <= target_size:
-        save(source, 'size', BASE_PATH / dirname / 'size.asm', size)
-    if speed <= target_speed:
-        save(source, 'speed', BASE_PATH / dirname / 'speed.asm', speed)
-    if size <= target_size and speed <= target_speed:
-        save(source, 'speed+size', BASE_PATH / dirname / 'speed+size.asm')
+
+    save(source, BASE_PATH / dirname, size, speed)
     print()
 
     return input('Add another source? [y/N] ').lower() == 'y'
 
 
 if __name__ == '__main__':
-    while add_solution():
+    author = input('GitHub username (will be added to your code): ')
+    while add_solution(author):
         pass
